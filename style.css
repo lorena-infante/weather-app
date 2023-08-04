@@ -1,0 +1,130 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  /*background: #262849;*/
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  /*background: linear-gradient(136deg, #2E335A 0%, #1C1B33 100%);
+  background-repeat: no-repeat;*/
+  background: #262849;
+  height: 100%;
+  color: #FFFFFF;
+  font-family: sans-serif;
+}
+
+.blurred {
+  filter: blur(3px);
+  overflow: hidden;
+}
+.header {
+  display: flex;
+  align-items: center;
+}
+
+.header-left {
+  display: flex;
+  width: 50%;
+  align-items: center;
+  justify-content: center;
+  margin: .5rem;
+  padding: .5rem;
+  border-right: 2px solid #8859D4;
+}
+
+.weather-icon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.weather-icon.large {
+  width: 80px;
+  height: 80px;
+}
+
+.header-current-temp {
+  font-size: 3rem;
+  margin-inline-start: 1rem;
+}
+
+.header-right {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  grid-template-rows: repeat(2, auto);
+  gap: 0.5rem;
+  justify-content: space-around;
+  width: 50%;
+}
+
+.info-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.label{
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size:.6rem;
+  color: #E0D9FFF5;
+}
+
+.value-sub-info {
+  font-weight: lighter;
+  font-size:0.75rem;
+}
+
+.day-section {
+  display:grid;
+  grid-template-columns:repeat(auto-fit, 75px);
+  gap: 0.5rem;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.day-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /*border: 1px solid #E0D9FFF5;*/
+  border: 1px solid #6C58C7;
+  border-radius: .25rem;
+  padding:.25rem;
+}
+
+.day-card-date {
+  font-size:.75rem;
+  /*color: #E0D9FFF5;*/
+  color:white;
+  margin-block-start: 0.5rem;
+}
+
+.hour-section {
+  width:100%;
+  text-align:center;
+  border-spacing:0;
+}
+.hour-row{
+  background-color:#4F3590;
+}
+.hour-row:nth-child(2n){
+  background-color: #6C58C7;
+}
+
+.hour-row > td {
+  padding:.25rem .5rem;
+}
+/*
+colores para rows de la table
+#6C58C7
+#7694CB
+#48319D- nel
+
+***estos combinan pero no c
+#2A2155
+#536193
+*/
