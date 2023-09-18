@@ -22,12 +22,13 @@ function renderWeather({ current, daily, hourly }) {
 function setValue(selector, value, { parent = document } = {}) {
     parent.querySelector(`[data-${selector}]`).innerText = `${value}`;
 }
-function setIcon() {
-
+function getIconURL(iconCode) {
+    return `/icons/${iconCode}.svg`
 }
-
+const currentIcon = document.querySelector('.weather-icon');
 function renderCurrentWeather(current) {
     //document.querySelector(`[data-current-temp]`).innerText = current.currentTemp;
+    currentIcon.src = getIconURL(current.iconCode);
     setValue('current-temp', current.currentTemp);
     setValue('current-high', current.highTemp);
     setValue('current-low', current.lowTemp);
