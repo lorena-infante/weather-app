@@ -1,5 +1,6 @@
 import './style.css';
 import { getWeather } from './weather';
+import { ICON_MAP } from './iconMap.js';
 
 getWeather(10, 10, Intl.DateTimeFormat().resolvedOptions().timeZone)
     .then(renderWeather)
@@ -23,7 +24,8 @@ function setValue(selector, value, { parent = document } = {}) {
     parent.querySelector(`[data-${selector}]`).innerText = `${value}`;
 }
 function getIconURL(iconCode) {
-    return `/icons/${iconCode}.svg`
+    //console.log(`ICON_MAP: ${ICON_MAP.get(iconCode)}`);
+    return `/icons/${ICON_MAP.get(iconCode)}.svg`
 }
 const currentIcon = document.querySelector('.weather-icon');
 function renderCurrentWeather(current) {
@@ -36,6 +38,4 @@ function renderCurrentWeather(current) {
     setValue('current-fl-low', current.lowFeelsLike);
     setValue('current-wind', current.windSpeed);
     setValue('current-precip', current.precip);
-
-
 }
