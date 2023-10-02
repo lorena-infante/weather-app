@@ -2,15 +2,25 @@ import './style.css';
 import { getWeather } from './weather';
 import { ICON_MAP } from './iconMap.js';
 
-getWeather(10, 10, Intl.DateTimeFormat().resolvedOptions().timeZone)
-    .then(renderWeather)
-    .catch((e) => {
-        console.error(e);
-        alert(`Data couldn't be fetched. Error: ${e}`);
-    })
-    .finally(() => {
-        //console.log('promise finished');
-    });
+navigator.geolocation.getCurrentPosition(positionSuccess, positionError);
+
+function positionSuccess({ coords }) {
+    getWeather(coords.latitude,
+        coords.longitude,
+        Intl.DateTimeFormat().resolvedOptions().timeZone)
+        .then(renderWeather)
+        .catch((e) => {
+            console.error(e);
+            alert(`Data couldn't be fetched. Error: ${e}`);
+        })
+        .finally(() => {
+            //console.log('promise finished');
+        });
+}
+
+function positionError() {
+    alert('There was an error trying to get your location. Please allow us to get the information for this site and then refresh the page');
+}
 
 function renderWeather({ current, daily, hourly }) {
     renderCurrentWeather(current);
@@ -55,7 +65,7 @@ function renderDailyWeather(daily) {
 
 }
 
-const HOUR_FORMATTER = new Intl.DateTimeFormat(undefined, { hour: 'numeric' })
+const HOUR_FORMATTER = new Intl.DateTimeFormat(undefined, { hour: 'numeric' });
 const hourlySection = document.querySelector('[data-hour-section]');
 const hourlyRowTemplate = document.getElementById('hour-row-template');
 
