@@ -47,7 +47,7 @@ function parseDailyWeather({daily}){
             //time multiplies times 1000 for the API data format is in ms
             timestamp: time * 1000,
             iconCode: daily.weathercode[index],
-            max_temp: Math.round(daily.temperature_2m_max[index])
+            maxTemp: Math.round(daily.temperature_2m_max[index])
         }
     });
 }
